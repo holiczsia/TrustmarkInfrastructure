@@ -58,6 +58,7 @@ def create_trustmark_definition():
 
     return trustmark_definition
 
+# Function to prettify the XML
 def prettify_xml(element):
     rough_string = ET.tostring(element, 'utf-8')
     reparsed = minidom.parseString(rough_string)
@@ -69,4 +70,5 @@ if __name__ == "__main__":
     
     with open("TrustmarkDefinition.xml", "w") as f:
         f.write(pretty_xml_string)
-
+    
+    print("XML file 'trustmark_definition.xml' created successfully.")

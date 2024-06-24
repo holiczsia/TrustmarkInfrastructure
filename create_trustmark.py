@@ -69,4 +69,3 @@ with open('trustmark.xml', 'w') as f:
     f.write(pretty_xml_string)
 
 print("XML file 'trustmark.xml' created successfully.")
-
