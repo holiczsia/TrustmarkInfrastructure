@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<tf:Trustmark tf:id="trustmark"
+    xmlns:tf="https://trustmarkinitiative.org/specifications/trustmark-framework/1.4/schema/"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema-instance">
+    <tf:Identifier>t</tf:Identifier>
+    <tf:TrustmarkDefinitionReference>
+        <tf:Identifier>t</tf:Identifier>
+    </tf:TrustmarkDefinitionReference>
+    <tf:IssueDateTime>2024-06-25T19:17:41Z</tf:IssueDateTime>
+    <tf:ExpirationDateTime>2024-09-23T19:17:41Z</tf:ExpirationDateTime>
+    <tf:PolicyURL>t</tf:PolicyURL>
+    <tf:RelyingPartyAgreementURL>t</tf:RelyingPartyAgreementURL>
+    <tf:StatusURL>t</tf:StatusURL>
+    <tf:Provider>
+        <tf:Identifier>t</tf:Identifier>
+        <tf:Name>t</tf:Name>
+        <tf:Contact>
+            <tf:Kind>PRIMARY</tf:Kind>
+            <tf:Email>t</tf:Email>
+        </tf:Contact>
+    </tf:Provider>
+    <tf:Recipient>
+        <tf:Identifier>t</tf:Identifier>
+        <tf:Name>t</tf:Name>
+        <tf:Contact>
+            <tf:Kind>PRIMARY</tf:Kind>
+            <tf:Email>t</tf:Email>
+        </tf:Contact>
+    </tf:Recipient>
+</tf:Trustmark>

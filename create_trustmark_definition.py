@@ -21,7 +21,7 @@ def create_trustmark_definition():
 
     # Signature element
     signature = ET.SubElement(trustmark_definition, "{%s}Signature" % ns['ds'])
-    # The content of the signature is omitted for this example
+    # The content of the signature is omitted for this examplerma
 
     # Metadata element
     metadata = ET.SubElement(trustmark_definition, "{%s}Metadata" % ns['tf'])
