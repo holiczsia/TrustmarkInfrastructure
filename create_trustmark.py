@@ -9,7 +9,7 @@ def create_subelement(parent, tag, text):
     return element
 
 # Function to gather input and create XML structure
-def create_trustmark_xml():
+def create_trustmark_xml(output_file_name):
     trustmark = ET.Element("tf:Trustmark", {
         "tf:id": "trustmark",
         "xmlns:tf": "https://trustmarkinitiative.org/specifications/trustmark-framework/1.4/schema/",
@@ -17,22 +17,17 @@ def create_trustmark_xml():
         "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
     })
     
-    tf_identifier = create_subelement(trustmark, "tf:Identifier", input("Enter Trustmark Identifier: "))
+    tf_identifier = create_subelement(trustmark, "tf:Identifier", f"https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark/{output_file_name}.xml")
     
     tf_definition_ref = ET.SubElement(trustmark, "tf:TrustmarkDefinitionReference")
     create_subelement(tf_definition_ref, "tf:Identifier", input("Enter Trustmark Definition Reference Identifier: "))
     
-    # Set issue date to current date and time
-    issue_datetime = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     create_subelement(trustmark, "tf:IssueDateTime", issue_datetime)
-    
-    # Set expiration date to 90 days after issue date
-    expiration_datetime = (datetime.now(timezone.utc) + timedelta(days=90)).strftime('%Y-%m-%dT%H:%M:%SZ')
     create_subelement(trustmark, "tf:ExpirationDateTime", expiration_datetime)
     
-    create_subelement(trustmark, "tf:PolicyURL", input("Enter Policy URL: "))
-    create_subelement(trustmark, "tf:RelyingPartyAgreementURL", input("Enter Relying Party Agreement URL: "))
-    create_subelement(trustmark, "tf:StatusURL", input("Enter Status URL: "))
+    create_subelement(trustmark, "tf:PolicyURL", "https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_policy/nief-trustmark-policy-1.2.pdf")
+    create_subelement(trustmark, "tf:RelyingPartyAgreementURL", "https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_relying_party_agreement/nief-trustmark-relying-party-agreement-1.4.pdf")
+    create_subelement(trustmark, "tf:StatusURL", f"https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_status_report/{output_file_name}_status_report.xml")
     
     provider = ET.SubElement(trustmark, "tf:Provider")
     create_subelement(provider, "tf:Identifier", input("Enter Provider Identifier: "))
@@ -52,31 +47,71 @@ def create_trustmark_xml():
     
     return trustmark
 
-# Create XML structure
-trustmark_xml = create_trustmark_xml()
+# Function to create trustmark status report
+def create_trustmark_status_report_xml(output_file_name):
+    trustmark_status_report = ET.Element("tf:TrustmarkStatusReport", {
+        "xmlns:tf": "https://trustmarkinitiative.org/specifications/trustmark-framework/1.4/schema/",
+        "xmlns:ds": "http://www.w3.org/2000/09/xmldsig#",
+        "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
+    })
+       
+    tf_ref = ET.SubElement(trustmark_status_report, "tf:TrustmarkReference")
+    create_subelement(tf_ref, "tf:Identifier", f"https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark/{output_file_name}.xml")
 
-# Convert to a string with pretty print
-xml_str = ET.tostring(trustmark_xml, encoding="utf-8")
-parsed_str = minidom.parseString(xml_str)
-pretty_str = parsed_str.toprettyxml(indent="    ")
+    create_subelement(trustmark_status_report, "tf:StatusCode", input("Enter Trustmark status (ACTIVE, REVOKED, or EXPIRED): "))
 
-# Customizing the pretty print to match the style of Trustmark header
-pretty_str = pretty_str.replace(' tf:id="trustmark"', '')
-pretty_str = pretty_str.replace(' xmlns:tf=', '\n    xmlns:tf=')
-pretty_str = pretty_str.replace(' xmlns:ds=', '\n    xmlns:ds=')
-pretty_str = pretty_str.replace(' xmlns:xs=', '\n    xmlns:xs=')
-pretty_str = pretty_str.replace('<tf:Trustmark\n    xmlns:tf=', '<tf:Trustmark tf:id="trustmark"\n    xmlns:tf=')
+    # Set issue date to current date and time
+    issue_datetime = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    create_subelement(trustmark_status_report, "tf:StatusDateTime", issue_datetime)
+    
+    return trustmark_status_report
 
-
-# Prompt for output file name
-output_file_name = input("Enter the output file name (with .xml extension): ")
+# Prompt for output trustmark name
+output_file_name = input("Enter the trustmark name (without .xml extension): ")
 
 # Hard-coded output file path
-output_file_path = f"./trustmark/{output_file_name}"
+output_tm_path = f"./trustmark/{output_file_name}.xml"
+output_tmsr_path = f"./trustmark_status_report/{output_file_name}_status_report.xml"
 
+issue_datetime = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+expiration_datetime = (datetime.now(timezone.utc) + timedelta(days=90)).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+# Create XML structure
+trustmark_xml = create_trustmark_xml(output_file_name)
+
+# Convert to a string with pretty print
+tm_str = ET.tostring(trustmark_xml, encoding="utf-8")
+parsed_tm_str = minidom.parseString(tm_str)
+pretty_tm_str = parsed_tm_str.toprettyxml(indent="    ")
+
+# Customizing the pretty print to match the style of Trustmark header
+pretty_tm_str = pretty_tm_str.replace(' tf:id="trustmark"', '')
+pretty_tm_str = pretty_tm_str.replace(' xmlns:tf=', '\n    xmlns:tf=')
+pretty_tm_str = pretty_tm_str.replace(' xmlns:ds=', '\n    xmlns:ds=')
+pretty_tm_str = pretty_tm_str.replace(' xmlns:xsi=', '\n    xmlns:xsi=')
+pretty_tm_str = pretty_tm_str.replace('<tf:Trustmark\n    xmlns:tf=', '<tf:Trustmark tf:id="trustmark"\n    xmlns:tf=')
 
 # Save to file
-with open(output_file_path, "w", encoding="utf-8") as xml_file:
-    xml_file.write(pretty_str)
+with open(output_tm_path, "w", encoding="utf-8") as xml_file:
+    xml_file.write(pretty_tm_str)
 
-print(f"XML file '{output_file_name}' created successfully in the trustmark folder.")
+print(f"Trustmark '{output_file_name}.xml' created successfully in the trustmark folder.")
+
+# Create trustmark status report
+trustmark_status_report_xml = create_trustmark_status_report_xml(output_file_name)
+
+# Convert to a string with pretty print
+tmsr_str = ET.tostring(trustmark_status_report_xml, encoding="utf-8")
+parsed_tmsr_str = minidom.parseString(tmsr_str)
+pretty_tmsr_str = parsed_tmsr_str.toprettyxml(indent="    ")
+
+# Customizing the pretty print to match the style of Trustmark status report header
+pretty_tmsr_str = pretty_tmsr_str.replace(' xmlns:tf=', '\n    xmlns:tf=')
+pretty_tmsr_str = pretty_tmsr_str.replace(' xmlns:ds=', '\n    xmlns:ds=')
+pretty_tmsr_str = pretty_tmsr_str.replace(' xmlns:xsi=', '\n    xmlns:xsi=')
+
+# Save to file
+with open(output_tmsr_path, "w", encoding="utf-8") as xml_file:
+    xml_file.write(pretty_tmsr_str)
+
+print(f"Trustmark Status Report '{output_file_name}_status_report.xml' created successfully in the trustmark_status_report folder.")

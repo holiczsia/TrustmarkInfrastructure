@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<tf:TrustmarkStatusReport
+    xmlns:tf="https://trustmarkinitiative.org/specifications/trustmark-framework/1.4/schema/"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <tf:TrustmarkReference>
+        <tf:Identifier>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark/test.xml</tf:Identifier>
+    </tf:TrustmarkReference>
+    <tf:StatusCode>ACTIVE</tf:StatusCode>
+    <tf:StatusDateTime>2024-06-25T19:59:14Z</tf:StatusDateTime>
+</tf:TrustmarkStatusReport>
