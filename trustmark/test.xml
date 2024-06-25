@@ -5,27 +5,27 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <tf:Identifier>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark/test.xml</tf:Identifier>
     <tf:TrustmarkDefinitionReference>
-        <tf:Identifier>t</tf:Identifier>
+        <tf:Identifier>testRefId</tf:Identifier>
     </tf:TrustmarkDefinitionReference>
-    <tf:IssueDateTime>2024-06-25T19:59:05Z</tf:IssueDateTime>
-    <tf:ExpirationDateTime>2024-09-23T19:59:05Z</tf:ExpirationDateTime>
+    <tf:IssueDateTime>2024-06-25T20:05:56Z</tf:IssueDateTime>
+    <tf:ExpirationDateTime>2024-09-23T20:05:56Z</tf:ExpirationDateTime>
     <tf:PolicyURL>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_policy/nief-trustmark-policy-1.2.pdf</tf:PolicyURL>
     <tf:RelyingPartyAgreementURL>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_relying_party_agreement/nief-trustmark-relying-party-agreement-1.4.pdf</tf:RelyingPartyAgreementURL>
     <tf:StatusURL>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_status_report/test_status_report.xml</tf:StatusURL>
     <tf:Provider>
-        <tf:Identifier>t</tf:Identifier>
-        <tf:Name>t</tf:Name>
+        <tf:Identifier>testProvId</tf:Identifier>
+        <tf:Name>testProv</tf:Name>
         <tf:Contact>
             <tf:Kind>PRIMARY</tf:Kind>
-            <tf:Email>t</tf:Email>
+            <tf:Email>testProvContact</tf:Email>
         </tf:Contact>
     </tf:Provider>
     <tf:Recipient>
-        <tf:Identifier>t</tf:Identifier>
-        <tf:Name>t</tf:Name>
+        <tf:Identifier>testReciId</tf:Identifier>
+        <tf:Name>testReci</tf:Name>
         <tf:Contact>
             <tf:Kind>PRIMARY</tf:Kind>
-            <tf:Email>t</tf:Email>
+            <tf:Email>testReciContact</tf:Email>
         </tf:Contact>
     </tf:Recipient>
 </tf:Trustmark>
