@@ -67,7 +67,7 @@ def create_trustmark_status_report_xml(output_file_name):
     return trustmark_status_report
 
 # Prompt for output trustmark name
-output_file_name = input("Enter the trustmark file name (without .xml extension): ")
+output_file_name = input("Enter the trustmark name (without .xml extension): ")
 
 # Hard-coded output file path
 output_tm_path = f"./trustmark/{output_file_name}.xml"

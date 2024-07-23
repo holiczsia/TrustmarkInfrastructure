@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 # Function to create a subelement with text
 def create_subelement(parent, tag, text):
@@ -48,7 +48,7 @@ def create_trustmark_definition_xml(output_file_name):
         "tf:ref": conformance_criterion_id, 
         "xsi:nil": "true"
     })
-    
+
     create_subelement(trustmark_definition, "tf:IssuanceCriteria", "yes(all)")
 
     return trustmark_definition

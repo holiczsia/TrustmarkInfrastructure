@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<tf:TrustInteroperabilityProfile
+    xmlns:tf="https://trustmarkinitiative.org/specifications/trustmark-framework/1.4/schema/"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <tf:Identifier>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trust_interoperability_profile/test.xml</tf:Identifier>
+    <tf:PublicationDateTime>2024-07-23T18:11:00Z</tf:PublicationDateTime>
+    <tf:References>
+        <tf:TrustmarkDefinitionRequirement tf:id="TD_1">
+            <tf:TrustmarkDefinitionReference>
+                <tf:Identifier>test</tf:Identifier>
+            </tf:TrustmarkDefinitionReference>
+        </tf:TrustmarkDefinitionRequirement>
+    </tf:References>
+    <tf:TrustExpression>TD_1</tf:TrustExpression>
+</tf:TrustInteroperabilityProfile>
