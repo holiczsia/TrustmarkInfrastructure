@@ -17,7 +17,7 @@ def create_trustmark_xml(output_file_name):
         "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
     })
     
-    tf_identifier = create_subelement(trustmark, "tf:Identifier", f"https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark/{output_file_name}.xml")
+    create_subelement(trustmark, "tf:Identifier", f"https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark/{output_file_name}.xml")
     
     tf_definition_ref = ET.SubElement(trustmark, "tf:TrustmarkDefinitionReference")
     create_subelement(tf_definition_ref, "tf:Identifier", input("Enter Trustmark Definition Reference Identifier: "))
@@ -67,7 +67,7 @@ def create_trustmark_status_report_xml(output_file_name):
     return trustmark_status_report
 
 # Prompt for output trustmark name
-output_file_name = input("Enter the trustmark name (without .xml extension): ")
+output_file_name = input("Enter the trustmark file name (without .xml extension): ")
 
 # Hard-coded output file path
 output_tm_path = f"./trustmark/{output_file_name}.xml"

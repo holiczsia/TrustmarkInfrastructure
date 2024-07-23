@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<tf:TrustmarkDefinition
+    xmlns:tf="https://trustmarkinitiative.org/specifications/trustmark-framework/1.4/schema/"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <tf:Metadata>
+        <tf:Identifier>https://github.com/holiczsia/TrustmarkInfrastructure/blob/main/trustmark_definition/test_definition.xml</tf:Identifier>
+        <tf:Name>test</tf:Name>
+        <tf:Version>test</tf:Version>
+        <tf:Description>test</tf:Description>
+        <tf:PublicationDateTime>2024-07-23T17:56:58Z</tf:PublicationDateTime>
+        <tf:TrustmarkDefiningOrganization>
+            <tf:Identifier>https://github.com/holiczsia/TrustmarkInfrastructure/</tf:Identifier>
+            <tf:Name>TAMU LENSS</tf:Name>
+            <tf:Contact>
+                <tf:Kind>PRIMARY</tf:Kind>
+                <tf:Email>holiczsia@tamu.edu</tf:Email>
+            </tf:Contact>
+        </tf:TrustmarkDefiningOrganization>
+    </tf:Metadata>
+    <tf:ConformanceCriteria>
+        <tf:ConformanceCriterion tf:id="test">
+            <tf:Number>1</tf:Number>
+            <tf:Name>test</tf:Name>
+            <tf:Description>test</tf:Description>
+        </tf:ConformanceCriterion>
+    </tf:ConformanceCriteria>
+    <tf:AssessmentSteps>
+        <tf:AssessmentStep tf:id="test">
+            <tf:Number>1</tf:Number>
+            <tf:Name>test</tf:Name>
+            <tf:Description>test</tf:Description>
+            <tf:ConformanceCriterion tf:ref="test" xsi:nil="true"/>
+        </tf:AssessmentStep>
+    </tf:AssessmentSteps>
+    <tf:IssuanceCriteria>yes(all)</tf:IssuanceCriteria>
+</tf:TrustmarkDefinition>
